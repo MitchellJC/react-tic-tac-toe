@@ -99,6 +99,14 @@ class Game extends React.Component {
           "Go to move #" + move + " (" + coords[move].coord[0] + ',' + coords[move].coord[1] + ')' :
           "Go to game start";
 
+          if (move == this.state.stepNumber) {
+            return (
+                <li key={move} className="current-move">
+                    <button className="current-move" onClick={() => this.jumpTo(move)}>{desc}</button>
+                </li>
+          );
+          }
+
           return (
               <li key={move}>
                   <button onClick={() => this.jumpTo(move)}>{desc}</button>
