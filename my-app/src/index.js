@@ -21,8 +21,17 @@ class Board extends React.Component {
     }
   
     render() {
+      const gameSquares = () => {
+        let squareNumber = 0;
+        for (let i=0; i<3; i++){
+          for (let k=0; k<3; k++) {
+            return this.renderSquare(squareNumber++);
+          }
+        }
+      }
       return (
         <div>
+            {}
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
@@ -65,7 +74,7 @@ class Game extends React.Component {
         const coords = this.state.coords.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
-        if (calculateWinner(squares) || squares [i]) {
+        if (calculateWinner(squares) || squares[i]) {
             return;
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -99,7 +108,7 @@ class Game extends React.Component {
           "Go to move #" + move + " (" + coords[move].coord[0] + ',' + coords[move].coord[1] + ')' :
           "Go to game start";
 
-          if (move == this.state.stepNumber) {
+          if (move === this.state.stepNumber) {
             return (
                 <li key={move} className="current-move">
                     <button className="current-move" onClick={() => this.jumpTo(move)}>{desc}</button>
